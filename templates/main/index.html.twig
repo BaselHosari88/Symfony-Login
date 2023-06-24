@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome Home{% endblock %}
+
+
+
+{% block body %}
+
+
+<div class="example-wrapper">
+{#    <h3>Welcome!  your email is : </h3><h5>{{ app.user.email }}</h5>#}
+</div>
+
+
+    <div class="container my-5">
+        <div class="row">
+                {% for training in trainings %}
+                    <div class="col-md-4 col-sm-6 col-12 p-2 text-center">
+                        <a href="{{ path('app_lesson', {id:training.id}) }}" class="text-decoration-none">
+                            <div class="card text-white bg-dark" style="">
+                                <img src="{{ training.photo }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h3 class="card-title text-success" style="font-weight: normalg">{{ training.name }}</h3>
+                                    <p class="card-text">{{ training.description }}</p>
+                                    {# <a href="{{ path('app_product',{id:category.id}) }}" class="btn btn-primary">{{ category.name }}</a>#}
+                                </div>
+
+                            </div>
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
+

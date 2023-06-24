@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InstructorController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>id</th>
+                <th>payment</th>
+                <th>lesson</th>
+                <th>user</th>
+            </tr>
+            {% for lesson in myLessons %}
+                <tr>
+                    <td>{{ lesson.id }}</td>
+                    <td>{{ lesson.payment }}</td>
+                    <td>{{ lesson.lesson.id }}</td>
+                    <td>{{ lesson.user.id }}</td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MemberController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+
+    <div class="container">
+
+        <h2>Welkom {{ app.user.email }}</h2>
+
+
+    </div>
+
+
+
+    <div class="container">
+
+        <table class="table">
+
+            <thead>
+            <tr>
+
+                <th scope="col">LoginName</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">DateOfBirth</th>
+                <th scope="col">preprovision</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+
+                <td>    {{ app.user.email }}</td>
+                <td>  {{ app.user.firstname }}</td>
+            <td>  {{ app.user.lastname }}</td>
+                <td>  {{ app.user.dateofbirth }}</td>
+               <td>  {{ app.user.preprovision }}</td>
+
+                <td><a href="{{ path('app_member_update') }}">Update</a></td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>id</th>
+                <th>payment</th>
+                <th>uitschrijven</th>
+            </tr>
+            {% for lesson in lessons %}
+                <tr>
+                    <td>{{ lesson.id }}</td>
+                    <td>{{ lesson.payment }}</td>
+                                    <td><a href="{{ path('app_member_delete', {id:lesson.id}) }}">uitschrijven</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+</div>
+{% endblock %}

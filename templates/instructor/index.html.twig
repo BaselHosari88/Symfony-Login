@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InstructorController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+<div>
+    <div class="container">
+
+        <h1>Hello {{ app.user.firstname }}</h1>
+        <p><a href="{{ path('app_instructor_update_profile') }}">update mijn info</a></p>
+
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+    <div class="container">
+
+        <table>
+            <tr>les</tr>
+
+            {% for myLesson in myLessons %}
+            <tr>
+                <td>{{ myLesson.id }}</td>
+                <td>{{ myLesson.location }}</td>
+                <td><a href="{{ path('app_instructor_lesson', {id:myLesson.id}) }}">deelnemers info</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}

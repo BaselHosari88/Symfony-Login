@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome Home{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="container my-5">
+
+        <h1>Beschikbare Lessen voor id: "{{ id }} {{ training.name }}"</h1>
+
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Date</th>
+
+                <th></th>
+            </tr>
+            {% for les in lesson %}
+                <tr>
+                    <td>{{ les.time|date('H:i:s') }}</td>
+                    <td>{{ les.date|date('d-m-Y') }}</td>
+                    <td>
+                        {% if app.user %}
+                            {% if 'ROLE_MEMBER' in app.user.roles %}
+
+                                <a href="{{ path('app_member_registration',{id:les.id} ) }}">add</a>
+
+                            {% endif %}
+                        {% endif %}
+
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+        {% if app.user %}
+        {% if 'ROLE_INSTRUCTOR' in app.user.roles %}
+
+            <a href="{{ path('app_instructor_form',{id:training.id}) }}">Insert</a>
+        {% endif %}
+
+        {% endif %}
+    </div>
+
+
+{% endblock %}
+

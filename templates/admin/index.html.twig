@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h2>Welkom {{ app.user.email }}</h2>
+</div>
+
+    <div>
+
+
+    </div>
+
+    <div class="container">
+
+        <table class="table">
+
+            <thead>
+            <tr>
+
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Update</th>
+
+            </tr>
+            </thead>
+            {% for user in users %}
+            <tbody>
+            <tr>
+
+                <td>    {{ user.email }}</td>
+                <td>  {{ user.password }}</td>
+                <td><a href="{{ path('app_form', {id:user.id})  }}">Update</a></td>
+                <td><a href="{{ path('app_delete', {id:user.id})  }}">delete</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_insert_instructor') }}">Insert</a>
+
+
+
+    </div>
+
+
+
+    <div class="container">
+
+        <table class="table">
+
+            <thead>
+            <tr>
+
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+            </thead>
+            {% for training in trainings %}
+            <tbody>
+            <tr>
+
+                <td>    {{ training.name }}</td>
+                <td>  {{ training.description }}</td>
+                <td>  {{ training.duration }}</td>
+                <td><a href="{{ path('app_admin_update', {id:training.id})  }}">Update</a></td>
+                <td><a href="{{ path('app_admin_delete', {id:training.id})  }}">delete</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_admin_insert') }}">Insert</a>
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
